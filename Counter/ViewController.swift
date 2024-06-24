@@ -9,11 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var increaseValueButton: UIButton!
-    @IBOutlet weak var decreaseButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var listOfChangesTextView: UITextView!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var increaseValueButton: UIButton!
+    @IBOutlet private weak var decreaseButton: UIButton!
+    @IBOutlet private weak var resetButton: UIButton!
+    @IBOutlet private weak var listOfChangesTextView: UITextView!
     
     private var value = 0
     
@@ -31,13 +31,13 @@ class ViewController: UIViewController {
         listOfChangesTextView.scrollRangeToVisible(range)
     }
     
-    @IBAction func buttonIncreaseValueTap(_ sender: Any) {
+    @IBAction private func buttonIncreaseValueTap(_ sender: Any) {
         value += 1
         countLabel.text = "Значение счётчика: \(value)"
         updateTextView(newText: "\(Date().formatted()): значение изменено на +1")
     }
     
-    @IBAction func buttonDecreaseValueTap(_ sender: Any) {
+    @IBAction private func buttonDecreaseValueTap(_ sender: Any) {
         if value == 0 {
             updateTextView(newText: "\(Date().formatted()): попытка уменьшить значение счëтчика ниже 0")
         } else {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func buttonResetValueTap(_ sender: Any) {
+    @IBAction private func buttonResetValueTap(_ sender: Any) {
         value = 0
         countLabel.text = "Значение счётчика: \(value)"
         updateTextView(newText: "\(Date().formatted()): значение сброшено")
